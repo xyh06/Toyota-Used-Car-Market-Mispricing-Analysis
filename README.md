@@ -1,57 +1,59 @@
-# Used Car Price Mechanism Analysis (Machine Learning)
+Used Car Price Formation Mechanism Analysis
+Project Overview
 
-## Background
+This project investigates how used car prices are formed, rather than only predicting prices.
 
-Understanding used-car pricing is important for buyers, sellers, and platforms.
-Instead of only predicting price, this project explains **how prices are formed**.
+Using 6,738 Toyota used-car records from the UK market (2013–2020),
+I construct a machine learning–based market pricing benchmark and analyze the structural mechanism behind valuation.
 
-Dataset: 6,738 Toyota used cars (UK market, 2013–2020)
+Research Questions
 
----
+What factors dominate used-car price formation?
 
-## Objective
+Do preferences affect absolute price or relative positioning?
 
-* Identify key factors affecting price
-* Build a market benchmark pricing model
-* Evaluate relative value retention of different models
+Is pricing primarily driven by depreciation or configuration?
 
----
+Methodology
 
-## Method
+Data Cleaning: IQR-based outlier treatment
 
-* Data cleaning with IQR outlier handling
-* Feature engineering (age, mileage, engine specs)
-* Random Forest regression (R² ≈ 0.86)
-* Price Index = Actual Price / Predicted Market Price
+Feature Engineering: Vehicle age, mileage intensity, engine structure
 
----
+Model: Random Forest Regression
 
-## Key Insights
+Performance: R² ≈ 0.86
 
-1. Depreciation dominates price formation
-   Age and mileage explain most price variation
+Market Price Index = Actual Price / Predicted Price
 
-2. Mechanical features provide stable premium
-   Engine size and fuel efficiency affect valuation range
+Key Findings
+1️⃣ Depreciation Dominates
 
-3. Preferences influence relative value rather than absolute price
-   Model and fuel type affect positioning within depreciation band
+Vehicle age and mileage explain most price variation.
+Used car markets are primarily structured around depreciation curves.
 
-**Conclusion:**
-Used car pricing follows a
+2️⃣ Mechanical Features Add Stable Premium
 
-> Depreciation First → Preference Second
-> mechanism
+Engine size and fuel type affect pricing within the depreciation band,
+but do not override depreciation structure.
 
----
+3️⃣ Preferences Affect Relative Positioning
 
-## Tech Stack
+Model type influences value positioning rather than absolute price level.
 
-Python, Pandas, Scikit-learn, Data Visualization
+Core Conclusion
 
----
+Used car pricing follows a:
 
-## Author
+Depreciation First → Configuration Second → Preference Adjustment
 
-Data Science Undergraduate | Interested in Data Analysis & Applied Statistics
+mechanism.
 
+Technical Stack
+
+Python · Pandas · Scikit-learn · Matplotlib
+
+Author
+
+Data Science Undergraduate
+Interested in Applied Statistics & Data Analysis
