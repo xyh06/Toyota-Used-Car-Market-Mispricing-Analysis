@@ -56,5 +56,6 @@ Python · Pandas · Scikit-learn · Matplotlib
 
 Author
 
-Data Science Undergraduate
-Interested in Applied Statistics & Data Analysis
+Maintained by yh
+Undergraduate in Data Science | Preparing for Applied Statistics
+
