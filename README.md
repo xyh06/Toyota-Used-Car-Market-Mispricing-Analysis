@@ -186,4 +186,7 @@ Independent end-to-end data analysis project demonstrating business-oriented mod
 
 Last updated: 2026
 
+## Online Report
+https://xyh06.github.io/Toyota-Used-Car-Market-Mispricing-Analysis/index.html
+
 
