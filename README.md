@@ -28,14 +28,13 @@ This project aims to:
 4. **Mispricing Indicator Construction**
 5. **Market Pattern Analysis**
 
----
-
 ### Mispricing Index
 
+```
 relative_deviation = (actual_price - predicted_price) / predicted_price
+```
 
-
-**Interpretation**
+Interpretation:
 
 - Negative → Undervalued (Good deal)
 - Positive → Overpriced
@@ -45,19 +44,12 @@ relative_deviation = (actual_price - predicted_price) / predicted_price
 
 ## Data Source
 
-Dataset: [Toyota Used Cars Market Insights](https://www.kaggle.com/datasets/anassarfraz13/toyota-used-car-market-insights) (Kaggle, Anas Sarfraz)
+Dataset: Toyota Used Cars Market Insights (Kaggle, Anas Sarfraz)  
+https://www.kaggle.com/datasets/anassarfraz13/toyota-used-car-market-insights
 
 Scope: ~6,738 UK Toyota listings (circa 2020)
 
-Features:
-- model
-- registration year
-- mileage
-- transmission
-- fuel type
-- engine size
-- MPG
-- listing price
+Features: model, registration year, mileage, transmission, fuel type, engine size, MPG, listing price
 
 Constraints: Cross-sectional snapshot only (no transaction outcomes, no time-to-sale, no dealer identity, no geography).
 
@@ -78,15 +70,20 @@ Constraints: Cross-sectional snapshot only (no transaction outcomes, no time-to-
 
 ### Mispricing Analysis
 ![Distribution of Mispricing Index](images/Distribution of relative_deviation Index.png)
+
 ![Mispricing by Category](images/relative_deviation Index by Category.png)
+
 ![Mispricing by Model](images/relative_deviation by Model.png)
+
 ![Mispricing Index of Different Vehicle Models](images/relative_deviation index of different vehicle models.png)
+
 ![Average Mispricing by Toyota Model](images/Average relative_deviation Index by Toyota Model.png)
 
 ---
 
 ### Vehicle Age Analysis
 ![Average Mispricing by Model and Age](images/Average relative_deviation Index by Model and Vehicle Age.png)
+
 ![Potential Value by Vehicle Age](images/Average Potential interpretation by Vehicle Age.png)
 
 ---
@@ -100,32 +97,34 @@ This chart highlights vehicles with the highest undervaluation potential, repres
 
 ## Repository Structure
 
+```
 Toyota-Used-Car-Market-Mispricing-Analysis/
 │
 ├── toyota.csv
 ├── Toyota-Used-Car-Market-Mispricing-Analysis.ipynb
 ├── index.html
 ├── images/
-│ ├── Average Potential interpretation by Vehicle Age.png
-│ ├── Average relative_deviation Index by Model and Vehicle Age.png
-│ ├── Average relative_deviation Index by Toyota Model.png
-│ ├── Correlation Matrix.png
-│ ├── Distribution of relative_deviation Index.png
-│ ├── Potential interpretation Distribution for Suggested Vehicles.png
-│ ├── Price Distribution by Model.png
-│ ├── Year vs Price and Mileage vs Price.png
-│ ├── relative_deviation Index by Category.png
-│ ├── relative_deviation by Model.png
-│ └── relative_deviation index of different vehicle models.png
+│   ├── Average Potential interpretation by Vehicle Age.png
+│   ├── Average relative_deviation Index by Model and Vehicle Age.png
+│   ├── Average relative_deviation Index by Toyota Model.png
+│   ├── Correlation Matrix.png
+│   ├── Distribution of relative_deviation Index.png
+│   ├── Potential interpretation Distribution for Suggested Vehicles.png
+│   ├── Price Distribution by Model.png
+│   ├── Year vs Price and Mileage vs Price.png
+│   ├── relative_deviation Index by Category.png
+│   ├── relative_deviation by Model.png
+│   └── relative_deviation index of different vehicle models.png
 └── README.md
-
+```
 
 ---
 
 ## How to View the Project
 
-Full interactive report (figures, model diagnostics, code outputs):  
-👉 https://xyh06.github.io/Toyota-Used-Car-Market-Mispricing-Analysis/
+Full interactive report (figures, model diagnostics, code outputs):
+
+https://xyh06.github.io/Toyota-Used-Car-Market-Mispricing-Analysis/
 
 ---
 
