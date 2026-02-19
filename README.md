@@ -103,12 +103,16 @@ MAI is analyzed against vehicle characteristics to identify systematic pricing p
 
 ### 4. High-Deviation Exposure Indicator
 
+## Repository Structure
+
+```text
 Toyota-Used-Car-Market-Mispricing-Analysis/
 ├── toyota.csv
 ├── Toyota-Used-Car-Market-Mispricing-Analysis.ipynb
 ├── index.html
 ├── images/
 └── README.md
+```
 
 
 ---
