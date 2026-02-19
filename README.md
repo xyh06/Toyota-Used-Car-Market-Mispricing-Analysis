@@ -1,142 +1,194 @@
-# Pricing Behavior and Liquidity Risk in the Used Car Market
-### Evidence from Toyota Listings (UK Cross-Sectional Dataset)
+# Toyota Used Car Market relative_deviation Analysis
+A machine learning–driven market analysis identifying systematic pricing inefficiencies 
+and data-driven vehicle acquisition strategies in the used car market.
 
-[**▶ Live Interactive Report (Full Analysis)**](https://xyh06.github.io/Toyota-Used-Car-Market-Mispricing-Analysis/)
+## Overview
 
----
+The used car market is highly influenced by brand perception, negotiation, and incomplete information.
+As a result, vehicles with similar specifications may be priced very differently.
 
-## Abstract
+Instead of only predicting prices, this project focuses on **detecting pricing inefficiencies** in the market.
 
-This project analyzes dealer pricing behavior using ~6,700 UK Toyota used-car listings.
-
-Instead of estimating intrinsic value, a machine learning price model is used as a **market consensus benchmark**.  
-Listings are interpreted by their deviation from this benchmark.
-
-The objective is behavioral interpretation — not arbitrage detection, profitability estimation, or claims of market inefficiency.
+We build a machine-learning–based fair price model and analyze the deviation between market price and statistically estimated value to identify statistically favorable acquisition opportunities for dealers.
 
 ---
 
-## Motivation
+## Business Problem
 
-Used-car dealers balance two competing objectives:
+The used car market suffers from significant information asymmetry.
+Market prices often deviate from intrinsic vehicle value due to negotiation, perception, and information asymmetry.
 
-- Faster turnover — listing below typical market level
-- Margin exploration — listing above market level
+For dealerships and traders, the key challenge is not predicting price, but identifying **mispriced vehicles**.
 
-Because the dataset contains **no transaction outcomes**, the project does NOT model:
+This project answers four practical business questions:
 
-- Sale probability
-- Days-on-market
-- Profitability
+1. Are certain Toyota models systematically high-deviation listing or low-deviation listing?
+2. Which vehicles present potential arbitrage opportunities?
+3. How should a dealership design a rational acquisition pricing strategy?
+4. How can we construct a fair baseline price for valuation?
 
-Instead, it measures relative market positioning.
+To solve this, we introduce the **relative_deviation Index**:
+
+> **relative_deviation Index = Market Price / Model Fair Price**
+
+| Value       | Interpretation                |
+| ----------- | ----------------------------- |
+| < 0.85      | Undervalued (buy pricing pattern) |
+| 0.85 – 1.15 | Fair price                    |
+| > 1.15      | high-deviation listing                    |
+
+This metric converts a prediction model into a decision-making indicator.
 
 ---
 
-## Data
+## Dataset
 
-Dataset: Toyota Used Cars Market Insights (Kaggle)  
-Scope: ~6,738 UK Toyota listings (circa 2020)
+* Approximately 6,700 UK Toyota used vehicle listings
+* Attributes include:
 
-Features:
-
-- Model
-- Registration year
-- Mileage
-- Transmission
-- Fuel type
-- Engine size
-- MPG
-- Listing price
-
-Constraints:
-
-- Cross-sectional snapshot only
-- No sale prices
-- No time-to-sale
-- No dealer identity
-- No geography
-- No time variation
+  * Model
+  * Year
+  * Mileage
+  * Transmission
+  * Fuel type
+  * Engine size
+  * MPG
+  * Price
 
 ---
 
 ## Methodology
 
-### Market Consensus Price Model
-Random Forest regression estimates expected listing price from attributes.
+### 1. Data Cleaning
 
-**Test R²: 0.863**
+* Removed duplicates
+* Checked missing values
+* Converted categorical variables
+* Created vehicle age feature
 
-Prediction is interpreted as a consensus level, not intrinsic value.
+### 2. Feature Engineering
 
-### Market Acceptance Index (MAI)
+* Vehicle Age = Current Year − Year
+* Encoded categorical features
+* Standardized numerical variables where necessary
 
-`MAI = Listing Price / Predicted Market Price`
+### 3. Fair Price Model
 
-| MAI Range | Interpretation | Pricing Stance |
-|--------|------|------|
-| < 0.90 | Below consensus | Turnover oriented |
-| 0.90 – 1.10 | Near consensus | Market aligned |
-| 1.10 – 1.25 | Premium positioning | Margin exploration |
-| > 1.25 | Large deviation | Elevated acceptance difficulty (proxy) |
+A **Random Forest Regressor** is trained to estimate the statistically fair market value of each vehicle.
 
-### High-Deviation Indicator
-`MAI > 1.15`  
-Top-tail deviation exposure (descriptive only)
+Model output:
+
+> Predicted Price represents the statistically fair market valuation baseline.
+
+
+### 4. relative_deviation Detection
+
+We define a market deviation indicator:
+
+```
+relative_deviation Index = Actual Price / Predicted Price
+```
+
+This transforms a prediction task into a market behavior analysis problem.
 
 ---
 
 ## Key Findings
 
-- Hybrid vehicles tend to appear at higher relative premiums
-- Vehicles aged 3–6 years show strongest positive deviation
-- Large engines with high mileage often appear in high-deviation listings
+### Model-level insights
 
-These patterns describe pricing behavior, not profitability or inefficiency.
+* Vehicle age and mileage are dominant price drivers
+* Transmission and engine size contribute secondary effects
+* Brand perception causes systematic deviations from fair value
 
----
+### Market behavior
 
-## Limitations
+* Some models consistently trade above fair value (brand premium)
+* Mid-age vehicles tend to be low-deviation listing
+* Price dispersion increases significantly for older cars
 
-- No transaction data → cannot validate sale speed
-- Cross-sectional only → no regional or dealer effects
-- Circa-2020 snapshot
-- Consumer pricing noise
+### Trading implication
 
----
-
-## Skills Demonstrated
-
-- Feature engineering with incomplete observational data
-- Non-parametric regression modeling
-- Behavioral metric design (MAI)
-- Proxy interpretation discipline
-- Translating ML output into interpretable insights
-- Explicit statistical limitation handling
+This suggests dealerships can systematically improve acquisition decisions using data-driven valuation instead of negotiation-based pricing.
 
 ---
 
-## Repository Structure
+## Acquisition Strategy Simulation
 
-```text
-Toyota-Used-Car-Market-Mispricing-Analysis/
-├── toyota.csv
-├── Toyota-Used-Car-Market-Mispricing-Analysis.ipynb
-├── index.html
+We simulate a dealership buying rule:
+
+> Buy when relative_deviation Index < 0.85
+
+Potential interpretation:
+
+```
+Potential interpretation = Predicted Price − Market Price
+```
+
+Result:
+
+* Identifies a subset of listings with statistically positive expected acquisition margin under model assumptions
+
+* Demonstrates data-driven purchasing strategy instead of manual appraisal
+
+Note: Realized interpretation may vary due to transaction costs, liquidity constraints, and resale time.
+
+---
+
+## Project Structure
+
+```
+Toyota-Used-Car-Market-relative_deviation-Analysis/
+├── data/
+├── notebook/
+│ └── Toyota-Used-Car-Market-relative_deviation-Analysis.ipynb
 ├── images/
 └── README.md
 ```
 
 ---
 
-## Takeaway
+## Tools & Libraries
 
-A predictive model can function as a behavioral benchmark rather than a valuation tool.
-
-The project demonstrates extracting interpretable patterns from incomplete real-world data while avoiding unsupported causal or profitability claims.
+* Python
+* Pandas
+* NumPy
+* Matplotlib / Seaborn
+* Scikit-learn (Random Forest)
 
 ---
 
-Author: xyh06  
-Last Updated: February 2026
+## Conclusion
+
+This project demonstrates that:
+
+* Pure price prediction has limited decision-making value without deviation analysis
+* Detecting pricing deviation provides actionable insight
+* Machine learning can support acquisition decision-making
+
+The methodology can be generalized to other second-hand markets such as electronics, housing, or collectibles.
+
+---
+
+## Future Work
+
+* Robustness validation and alternative model comparison (XGBoost, Linear Models)
+* SHAP explainability analysis
+* Time-series market trend analysis
+* Dealer interpretation back-testing
+
+---
+
+## Author
+
+Independent end-to-end data analysis project demonstrating business-oriented modeling workflow.
+
+
+Last updated: 2026
+
+---
+
+## Online Report
+https://xyh06.github.io/Toyota-Used-Car-Market-relative_deviation-Analysis/index.html
+
 
