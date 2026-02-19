@@ -113,39 +113,17 @@ Represents top-tail deviation exposure (descriptive only, not a sale probability
 
 Key Findings
 
-Hybrid vehicles tend to list at higher relative premiums (e.g., average MAI ≈ 1.18 for Prius-type models).
+Hybrid vehicles tend to list at higher relative premiums (e.g., average MAI ≈1.15–1.20).
 
-Vehicles aged 3–6 years show the strongest positive deviation (peak mean MAI ≈ 1.12).
+Vehicles aged 3–6 years show the strongest positive deviation (peak mean MAI ≈1.10+).
 
-High mileage combined with large engines frequently appears in high-deviation listings (~18–22% exceed 1.15 threshold).
+High mileage combined with large engines frequently appears in high-deviation listings (~20% exceed the 1.15 threshold).
 
+MAI Distribution by Model
 
+Mean MAI by Vehicle Age
 
-
-
-
-These patterns describe pricing behavior — not mispricing profitability.
-
-Business Implications
-Dealer Pricing Strategy
-
-High-premium perception vehicles (hybrid trims, low-mileage cars) behave as margin-seeking inventory.
-Dealers may prioritize profit per sale rather than rapid turnover.
-
-Commodity vehicles (economy trims, high mileage) function as liquidity inventory and benefit from competitive pricing.
-
-Inventory Allocation
-
-The results imply a two-tier inventory strategy:
-
-Premium-perception vehicles → hold longer, price above benchmark
-
-Commodity vehicles → price competitively to accelerate sales
-
-Market Risk Signal
-
-Persistent positive deviation in specific categories may indicate demand-driven price pressure rather than valuation accuracy.
-If demand weakens, these categories face larger downward adjustment risk.
+High-Deviation Exposure Heatmap
 
 Skills Demonstrated
 
@@ -161,19 +139,11 @@ Translating ML output into interpretable economic insight
 
 Communicating statistical limitations explicitly
 
-Repository Structure
-toyota.csv
-Toyota-Used-Car-Market-Mispricing-Analysis.ipynb
-index.html
-images/
-README.md
-
 Takeaway
 
-A predictive model can serve as a behavioral benchmark rather than a valuation tool.
+A predictive model can be used as a behavioral benchmark rather than a valuation tool.
 
-This project does not attempt to identify arbitrage opportunities,
-but to understand how market participants systematically price assets under bounded rationality.
+This project demonstrates how interpretable insights can be extracted from incomplete real-world data while avoiding unsupported causal or profitability claims.
 
 Author: xyh06
 Last Updated: February 2026
