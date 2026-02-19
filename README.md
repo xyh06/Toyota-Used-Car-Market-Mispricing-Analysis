@@ -1,4 +1,4 @@
-# Toyota Used Car Market Mispricing Analysis
+# An Empirical Study on Toyota Used Car Pricing
 
 A data analysis project that identifies pricing deviation patterns in the Toyota used-car market using machine learning regression and statistical indicators.
 
